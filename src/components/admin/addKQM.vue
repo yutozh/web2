@@ -121,6 +121,7 @@ export default {
   destroyed () {
   },
   mounted () {
+    // 块级代码高亮
     $.FroalaEditor.DefineIcon('dropdownIcon', {NAME: 'file-code-o'})
 
     // Define a dropdown button.
@@ -151,14 +152,6 @@ export default {
         'docker': 'Docker',
         'go': 'Go'
       },
-
-      // If present, the options property will be ignored.
-      // It can be used to define a custom HTML for the dropdown.
-      // html: function () {
-      //   // The current context is the editor instance.
-      //   return ''
-      // },
-
       // Save the dropdown action into undo stack.
       undo: true,
       // Focus inside the editor before callback.
@@ -170,18 +163,18 @@ export default {
       callback: function (cmd, val, params) {
         // The current context is the editor instance.
         this.html.insert(`<pre><code class="language-${val}">${$('<div/>').text(this.selection.text()).html()}</code></pre>`, true)
-      },
+      }
+    })
 
-      // Called when the dropdown button state might have changed.
-      refresh: function ($btn) {
-        // The current context is the editor instance.
-        // console.log (this.selection.element())
-      },
-
-      // Called when the dropdown is shown.
-      refreshOnShow: function ($btn, $dropdown) {
-        // The current context is the editor instance.
-        // console.log (this.selection.element());
+    // 行内代码高亮
+    $.FroalaEditor.DefineIcon('inline-code', {NAME: 'info'})
+    $.FroalaEditor.RegisterCommand('inline-code', {
+      title: 'inline-code',
+      focus: true,
+      undo: true,
+      refreshAfterCallback: true,
+      callback: function () {
+        this.html.insert(`<code>${$('<div/>').text(this.selection.text()).html()}</code>`, true)
       }
     })
 
@@ -192,7 +185,7 @@ export default {
       fileMaxSize: 1024 * 1024 * 50,
       toolbarButtons: ['fullscreen', 'bold', 'italic', 'underline', 'strikeThrough', 'subscript', 'superscript', '|', 'fontFamily', 'fontSize',
         '-', 'color', 'inlineStyle', 'paragraphStyle', '|', 'paragraphFormat', 'align', 'formatOL', 'formatUL', 'outdent', 'indent', 'quote',
-        '-', 'code', 'insertLink', 'insertImage', 'insertVideo', 'embedly', 'insertFile', 'insertTable', '|', 'emoticons', 'specialCharacters', 'insertHR', 'selectAll', 'clearFormatting', '|', 'print', 'spellChecker', 'help', 'html', '|', 'undo', 'redo'],
+        '-', 'code', 'inline-code', 'insertLink', 'insertImage', 'insertVideo', 'embedly', 'insertFile', 'insertTable', '|', 'emoticons', 'specialCharacters', 'insertHR', 'selectAll', 'clearFormatting', '|', 'print', 'spellChecker', 'help', 'html', '|', 'undo', 'redo'],
       fontFamilySelection: true,
       fontSizeSelection: true,
       paragraphFormatSelection: true

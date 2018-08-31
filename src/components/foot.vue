@@ -54,6 +54,8 @@
       </div>
       <i class="close icon"></i>
       <div class="scrolling content">
+        <h4>2018.08.31</h4>
+        <p>网站多页面重构，更换在线编辑器</p>
         <h4>2017.09.02</h4>
         <p>增加"我的运动数据"</p>
         <h4>2017.08.18</h4>
