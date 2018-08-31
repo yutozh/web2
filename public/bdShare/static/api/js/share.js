@@ -42,7 +42,10 @@ window._bd_share_main ? window._bd_share_is_recently_loaded = !0 : (window._bd_s
         if (e.onload = e.onerror = e.onreadystatechange = null, e.parentNode) {
           e.parentNode.removeChild(e)
           try {
-            if (e.clearAttributes) e.clearAttributes() else for (var n in e) delete e[n]
+            if (e.clearAttributes)
+              e.clearAttributes()
+            else
+              for (var n in e) delete e[n]
           } catch (s) {
           }
         }
