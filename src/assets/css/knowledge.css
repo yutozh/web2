@@ -1,0 +1,134 @@
+.home-knowledge-container article, .knowledge-container article {
+  display: block;
+  width: 60%;
+  border: 1px solid deepskyblue;
+  box-shadow: 0 0 40px #eee;
+  margin: 10px auto;
+  text-align: left;
+  padding: 10px 10px;
+  border-radius: 4px;
+  background-color: rgba(255, 248, 249, 0.16);
+  transition: all 0.36s;
+  animation: fade-in; /*动画名称*/
+  animation-duration: 0.2s; /*动画持续时间*/
+  position: relative;
+  opacity: 0;
+  animation-fill-mode: forwards;
+}
+
+.home-knowledge-container article:hover, .knowledge-container article:hover {
+  box-shadow: 0 0 40px #ccc;
+}
+
+.home-knowledge-container article:nth-child(1), .knowledge-container article:nth-child(1) {
+  animation-delay: 0.2s;
+}
+
+.home-knowledge-container article:nth-child(2), .knowledge-container article:nth-child(2) {
+  animation-delay: 0.3s;
+}
+
+.home-knowledge-container article:nth-child(3), .knowledge-container article:nth-child(3) {
+  animation-delay: 0.4s;
+}
+
+.home-knowledge-container article:nth-child(4), .knowledge-container article:nth-child(4) {
+  animation-delay: 0.5s;
+}
+
+.home-knowledge-container article:nth-child(5), .knowledge-container article:nth-child(5) {
+  animation-delay: 0.6s;
+}
+
+.home-knowledge-container article:nth-child(6), .knowledge-container article:nth-child(6) {
+  animation-delay: 0.7s;
+}
+
+.home-knowledge-container article:nth-child(7), .knowledge-container article:nth-child(7) {
+  animation-delay: 0.8s;
+}
+
+.home-knowledge-container article:nth-child(8), .knowledge-container article:nth-child(8) {
+  animation-delay: 0.9s;
+}
+
+.article-title {
+  display: inline-block;
+  color: #3c4b5e;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  width: 70%;
+}
+
+.article-label {
+  float: right;
+  overflow: hidden;
+  display: inline-flex;
+  position: absolute;
+  text-align: right;
+  right: 10px;
+}
+
+.article-summary {
+  color: #9dabbf;
+  word-break: break-all;
+  height: 60px;
+  overflow: hidden;
+}
+
+.article-readMore {
+  font-size: 18px;
+  cursor: pointer;
+  float: right;
+  position: relative;
+  overflow: hidden;
+  outline: none;
+  color: rgba(0, 16, 255, 0.45);
+  height: 25px;
+  width: 95px;
+  text-align: center;
+}
+
+.article-readMore::before {
+  position: absolute;
+  top: 0;
+  left: 0;
+  content: ">阅读全文<";
+  border-bottom: 1px solid red;
+  transition: transform 0.2s;
+  color: #ff0c0b;
+  transform: translateX(-100%);
+}
+
+.article-readMore:hover::before {
+  box-sizing: border-box;
+  transform: translateX(0%);
+}
+
+.article-readMore span {
+  display: block;
+  transition: transform 0.2s;
+  border-bottom: 1px solid rgba(0, 16, 255, 0.45);;
+}
+
+.article-readMore:hover span {
+  transform: translateX(100%);
+}
+
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  /*初始状态 透明度为0*/
+  40% {
+    opacity: 0.5;
+    transform: translateY(15px)
+  }
+  /*过渡状态 透明度为0*/
+  100% {
+    opacity: 1;
+  }
+  /*结束状态 透明度为1*/
+}

@@ -1,0 +1,40 @@
+/*各页面wrapper,container的样式*/
+
+.body-transition {
+  transition: all 0.8s cubic-bezier(0.18, 1.04, 0.58, 1);
+}
+
+.body-wrapper {
+  position: relative;
+  z-index: 5;
+}
+
+.body-container {
+  background-color: rgb(255, 255, 255);
+  width: 90%;
+  z-index: 9;
+  margin: 0 auto;
+  margin-bottom: 100px;
+  padding-bottom: 160px;
+  animation: show 0.8s;
+}
+
+@keyframes show {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.body-container::before {
+  content: "";
+  display: block;
+  width: 90%;
+  margin: 0 auto;
+  height: 46px;
+  background: url("../img/header-center.png") no-repeat top;
+  position: absolute;
+  top: -22px;
+}
