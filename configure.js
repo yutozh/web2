@@ -1,5 +1,5 @@
 module.exports = {
-  // DEBUG: true,
+  // DEBUG: false,
   // MongoDB
   port: '8888',
   mongoString: 'mongodb://admin:admin@localhost/web2',
