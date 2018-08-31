@@ -174,7 +174,7 @@ export default {
       undo: true,
       refreshAfterCallback: true,
       callback: function () {
-        this.html.insert(`<code>${$('<div/>').text(this.selection.text()).html()}</code>`, true)
+        this.html.insert(`<code class="language-bash">${$('<div/>').text(this.selection.text()).html()}</code>`, true)
       }
     })
 
