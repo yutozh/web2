@@ -42,7 +42,11 @@ window._bd_share_main ? window._bd_share_is_recently_loaded = !0 : (window._bd_s
         if (e.onload = e.onerror = e.onreadystatechange = null, e.parentNode) {
           e.parentNode.removeChild(e)
           try {
-            if (e.clearAttributes) e.clearAttributes() else for (var n in e) delete e[n]
+            if (e.clearAttributes) {
+              e.clearAttributes()
+            } else {
+              for (var n in e) delete e[n]
+            }
           } catch (s) {
           }
         }
@@ -60,10 +64,14 @@ window._bd_share_main ? window._bd_share_is_recently_loaded = !0 : (window._bd_s
   function c (e, t) {
     if (!t || !t.isCalled) {
       var n, s = navigator.userAgent, i = ~s.indexOf('AppleWebKit'), a = ~s.indexOf('Opera')
-      if (i || a) e.sheet && (n = !0) else if (e.sheet) try {
-        e.sheet.cssRules && (n = !0)
-      } catch (r) {
-        ('SecurityError' === r.name || 'NS_ERROR_DOM_SECURITY_ERR' === r.name) && (n = !0)
+      if (i || a) {
+        e.sheet && (n = !0)
+      } else if (e.sheet) {
+        try {
+          e.sheet.cssRules && (n = !0)
+        } catch (r) {
+          ('SecurityError' === r.name || 'NS_ERROR_DOM_SECURITY_ERR' === r.name) && (n = !0)
+        }
       }
       setTimeout(function () {
         n ? t && t() : c(e, t)
@@ -125,7 +133,10 @@ window._bd_share_main ? window._bd_share_is_recently_loaded = !0 : (window._bd_s
         a = /\.css(?:\?|$)/i.test(this.name)
       this.type = a ? 'css' : 'js'
       var r = '/' + this.type + '/' + s.moduleFileMap[t][this.name]
-      if (n += e._useConfig && s.moduleFileMap[t][this.name] ? this.type + '/' + s.moduleFileMap[t][this.name] : this.type + '/' + this.name + (a ? '' : '.js'), e._firstScreenCSS.indexOf(this.name) > 0 || e._useConfig && r == e._firstScreenJS) i._loaded = !0, i.ready() else {
+      if (n += e._useConfig && s.moduleFileMap[t][this.name] ? this.type + '/' + s.moduleFileMap[t][this.name] : this.type + '/' + this.name + (a ? '' : '.js'), e._firstScreenCSS.indexOf(this.name) > 0 || e._useConfig && r == e._firstScreenJS) {
+        i._loaded = !0, i.ready()
+      }
+      else {
         var o = (new Date).getTime()
         _.create({
           src: n, type: this.type, loaded: function () {
@@ -134,13 +145,17 @@ window._bd_share_main ? window._bd_share_is_recently_loaded = !0 : (window._bd_s
         })
       }
     }, lazyLoad: function () {
-      if (this.name, s.lazyLoadPaths[this.getKey()]) this.define(), delete s.lazyLoadPaths[this.getKey()] else {
+      if (this.name, s.lazyLoadPaths[this.getKey()]) {
+        this.define(), delete s.lazyLoadPaths[this.getKey()]
+      } else {
         if (this.exist()) return
         s.requiredPaths[this.getKey()] = !0, this.load()
       }
     }, ready: function (e, t) {
       var i = t ? this._requiredStack : this._readyStack
-      if (e) this._loaded ? e() : i.push(e) else {
+      if (e) {
+        this._loaded ? e() : i.push(e)
+      } else {
         if (s.loadedPaths[this.path] = !0, delete s.loadingPaths[this.path], this._loaded = !0, s.currentPath = this.path, this._readyStack && this._readyStack.length > 0) {
           this._inited = !0
           var a, r = this.svnMod
@@ -214,9 +229,11 @@ window._bd_share_main ? window._bd_share_is_recently_loaded = !0 : (window._bd_s
   e._setMod = function (e) {
     l = e || d
   }, e._fileMap = function (t, i) {
-    if ('object' == typeof t) n(t, function (t, n) {
-      e._fileMap(n, t)
-    }) else {
+    if ('object' == typeof t) {
+      n(t, function (t, n) {
+        e._fileMap(n, t)
+      })
+    } else {
       var a = l
       'string' == typeof i && (i = [i]), t = 1 == t.indexOf('js/') ? t.substr(4) : t, t = 1 == t.indexOf('css/') ? t.substr(5) : t
       var r = s.moduleFileMap[a]
@@ -273,7 +290,7 @@ window._bd_share_main ? window._bd_share_is_recently_loaded = !0 : (window._bd_s
   n.each = function (e, t, n) {
     var s, i, a, r = e.length
     if ('function' == typeof t) for (a = 0; r > a && (i = e[a], s = t.call(n || e, a, i), s !== !1); a++)
-    return e
+      return e
   }
   var s = function (e, t) {
     for (var n in t) t.hasOwnProperty(n) && (e[n] = t[n])
@@ -283,7 +300,11 @@ window._bd_share_main ? window._bd_share_is_recently_loaded = !0 : (window._bd_s
     for (var e = arguments[0], t = 1, n = arguments.length; n > t; t++) s(e, arguments[t])
     return e
   }, n.domready = function (e, t) {
-    if (t = t || document, /complete/.test(t.readyState)) e() else if (t.addEventListener) 'interactive' == t.readyState ? e() : t.addEventListener('DOMContentLoaded', e, !1) else {
+    if (t = t || document, /complete/.test(t.readyState)) {
+      e()
+    } else if (t.addEventListener) {
+      'interactive' == t.readyState ? e() : t.addEventListener('DOMContentLoaded', e, !1)
+    } else {
       var n = function () {
         n = new Function, e()
       }
